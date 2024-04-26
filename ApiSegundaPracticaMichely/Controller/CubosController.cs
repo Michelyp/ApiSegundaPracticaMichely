@@ -84,11 +84,10 @@ namespace ApiSegundaPracticaMichely.Controller
             Claim claim = HttpContext.User
                 .FindFirst(x => x.Type == "UserData");
             //RECUPERAMOS EL JSON DEL EMPLEADO
-            string jsonEmpleado = claim.Value;
-            UsuariosCubo empleado =
-                JsonConvert.DeserializeObject<UsuariosCubo>(jsonEmpleado);
-            int idUsuario = claim.Value.
-           return await this.repo.FindPedidosUsuarioAsync();
+            string jsonUsuario = claim.Value;
+            UsuariosCubo usuario =
+                JsonConvert.DeserializeObject<UsuariosCubo>(jsonUsuario);
+           return await this.repo.FindPedidosUsuarioAsync(usuario.IdUsuario);
 
         }
 
